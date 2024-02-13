@@ -4,6 +4,7 @@ using Aux_3d.Repositories;
 using Aux_3d.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Referencia a Conexão com o Banco de Dados
@@ -12,10 +13,11 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(mySq
 
 //Adicionando as injeções de dependencias
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-builder.Services.AddTransient<IProdutoRepositorycs, ProdutoRepository>();
+builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
 
 
 var app = builder.Build();

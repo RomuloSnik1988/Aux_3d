@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace Aux_3d.Repositories;
 
-public class ProdutoRepository : IProdutoRepositorycs
+public class ProdutoRepository : IProdutoRepository
 {
     private readonly AppDBContext _context;
 

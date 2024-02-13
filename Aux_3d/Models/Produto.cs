@@ -7,6 +7,7 @@ public class Produto
 {
     [Key]
     public int ProdutoId { get; set; }
+
     [Required(ErrorMessage ="O nome do produto deve ser informado")]
     [Display(Name = "Nome do produto")]
     [MaxLength(100, ErrorMessage ="O nome não deve exeder 100 caracteres")]

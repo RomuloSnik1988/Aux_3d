@@ -2,7 +2,7 @@
 
 namespace Aux_3d.Repositories.Interfaces;
 
-public interface IProdutoRepositorycs
+public interface IProdutoRepository
 {
     IEnumerable<Produto> Produtos { get; }
 

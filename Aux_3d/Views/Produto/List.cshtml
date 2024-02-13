@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Aux_3d.Models.Produto>
+
+    <div>
+        <h2>Todos os Produtos</h2>
+    </div>
+
+@foreach(var produto in Model)
+{
+    <div>
+        <h4>@produto.Nome</h4>
+        <p><img src="@produto.ImagemUrl" /></p>
+        <h3>Preço : @produto.Preco.ToString("c")</h3>
+    </div>
+}
