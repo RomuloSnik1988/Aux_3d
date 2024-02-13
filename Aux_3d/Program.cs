@@ -1,4 +1,7 @@
 using Aux_3d.Context;
+using Aux_3d.Models;
+using Aux_3d.Repositories;
+using Aux_3d.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 string mySqlConection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(mySqlConection));
 
+//Adicionando as injeções de dependencias
+builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddTransient<IProdutoRepositorycs, ProdutoRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();

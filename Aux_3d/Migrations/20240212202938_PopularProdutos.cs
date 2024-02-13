@@ -23,7 +23,7 @@ namespace Aux_3d.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.Sql("DELETE FROM Produtos");
         }
     }
 }
