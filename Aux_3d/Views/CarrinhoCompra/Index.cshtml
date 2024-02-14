@@ -1,0 +1,59 @@
+﻿@model  CarrinhoCompraViewModel
+
+<div class="Container">
+<div class="row">
+
+    <img src="~/images/carrinho-de-compras.png"/>
+    <div>
+        <h4>Seu carrinho de compras</h4>
+    </div>
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>Quantidade</th>
+                <th>Lanche</th>
+                <th class="text-right">Preço</th>
+                <th class="text-right">Subtotal</th>
+                <th></th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+                @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+                {
+                    <tr>
+                        <td class="text-center">@item.Quantidade</td>
+                        <td class="text-left">@item.Produto.Nome</td>
+                        <td class="text-right">@item.Produto.Preco.ToString("c")</td>
+                        
+                        <td class="text-right">@((item.Quantidade * item.Produto.Preco).ToString("c"))</td>
+
+                        <td class="text-center">
+                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra"
+                            asp-route-ProdutoId="@item.Produto.ProdutoId"><img src="~/images/lixeira-de-reciclagem.png" /></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-right">Total</td>
+                <td class="text-right">@Model.CarrinhoCompraTotal.ToString("c")</td>
+            </tr>
+            </tbody>
+
+    </table>
+
+    <div class="text-right">
+        <div class="btn-group">
+            <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" asp-controller="Produto" asp-action="List">Continuar Comprando</a>
+
+        </div>
+
+    </div>
+</div>
+</div>

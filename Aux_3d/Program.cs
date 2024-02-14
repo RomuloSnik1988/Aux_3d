@@ -14,6 +14,7 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(mySq
 //Adicionando as injeções de dependencias
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
 //
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

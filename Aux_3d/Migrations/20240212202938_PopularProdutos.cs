@@ -17,7 +17,7 @@ namespace Aux_3d.Migrations
                 "VALUES ('Samurai', 'Personagem','Action Figure do personagem samurai com uma criança no colo', 350.0, '~/images/ProdutosImg/Samurai.jpeg','~/images/ProdutosImg/Samurai.gif', 0, 1, 1)");
             
             migrationBuilder.Sql("INSERT INTO Produtos(Nome, Descricao, DescricaoDetalhada, Preco, ImagemUrl, ImagemThumbnailUrl, IsProdutoPreferido, EmEstoque, CategoriaID)" +
-                "VALUES ('Mulher corpo em transformação', 'Decoração', 'Decoração de uma mulher que treina para queimar a gordura, corpo em transformação', 550.0, '~/images/ProdutosImg/MulherTreinando.jpeg','~/images/ProdutosImg/MulherTreinando.jpeg', 1, 1, 2)");
+                "VALUES ('Mulher corpo em transformação', 'Decoração', 'Decoração de uma mulher que treina para queimar a gordura, corpo em transformação', 550.0, '~/images/ProdutosImg/MulherTreinando.jpeg','~/images/ProdutosImg/MulherTreinando.gif', 1, 1, 2)");
         }
 
         /// <inheritdoc />
