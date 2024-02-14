@@ -1,14 +1,14 @@
-﻿@model IEnumerable<Aux_3d.Models.Produto>
+﻿@model ProdutoListViewModel
 
     <div>
-        <h2>Todos os Produtos</h2>
+        <h2>@Model.CategoriaAtual</h2>
     </div>
-
-@foreach(var produto in Model)
+   
+    <div class="container">
+    <div class="row">
+@foreach(var produto in Model.Produtos)
 {
-    <div>
-        <h4>@produto.Nome</h4>
-        <p><img src="@produto.ImagemUrl" /></p>
-        <h3>Preço : @produto.Preco.ToString("c")</h3>
-    </div>
-}
+       <partial name="_ProdutoResumo" for="@produto" />
+    }
+</div>
+</div>
