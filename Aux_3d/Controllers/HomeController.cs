@@ -1,4 +1,6 @@
 using Aux_3d.Models;
+using Aux_3d.Repositories.Interfaces;
+using Aux_3d.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,10 +8,21 @@ namespace Aux_3d.Controllers
 {
     public class HomeController : Controller
     {
-      
+        private readonly IProdutoRepository _produtoRepository;
+
+        public HomeController(IProdutoRepository produtoRepository)
+        {
+            _produtoRepository = produtoRepository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                ProdutoPreferidos = _produtoRepository.ProdutosPreferidos
+            };
+
+            return View(homeViewModel);
         }
                
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
