@@ -1,20 +1,20 @@
 ﻿using Aux_3d.Context;
 using Aux_3d.Models;
 using Aux_3d.Repositories.Interfaces;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aux_3d.Repositories;
 
 public class ProdutoRepository : IProdutoRepository
 {
-    private readonly AppDBContext _context;
+    private readonly AppDbContext _context;
 
-    public ProdutoRepository(AppDBContext context)
+    public ProdutoRepository(AppDbContext contexto)
     {
-            _context = context;
+            _context = contexto;
     }
 
-    public IEnumerable<Produto> Produtos => _context.Produtos.Include(c=> c.Categoria);
+    public IEnumerable<Produto> Produtos => _context.Produtos.Include(c => c.Categoria);
 
     public IEnumerable<Produto> ProdutosPreferidos => _context.Produtos.
                                  Where(p => p.IsProdutoPreferido).Include(c => c.Categoria);

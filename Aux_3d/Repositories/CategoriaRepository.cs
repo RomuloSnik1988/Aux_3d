@@ -6,9 +6,9 @@ namespace Aux_3d.Repositories;
 
 public class CategoriaRepository : ICategoriaRepository
 {
-    private readonly AppDBContext _context;
+    private readonly AppDbContext _context;
 
-    public CategoriaRepository(AppDBContext context)
+    public CategoriaRepository(AppDbContext context)
     {
         _context = context;
     }

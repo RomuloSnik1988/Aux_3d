@@ -1,15 +1,15 @@
 ﻿using Aux_3d.Context;
 using Aux_3d.Migrations;
 using Microsoft.Identity.Client;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aux_3d.Models;
 
 public class CarrinhoCompra
 {
-    private readonly AppDBContext _context;
+    private readonly AppDbContext _context;
 
-    public CarrinhoCompra(AppDBContext context)
+    public CarrinhoCompra(AppDbContext context)
     {
         _context = context;
     }
@@ -25,7 +25,7 @@ public class CarrinhoCompra
             services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
         //Obtendo um serviço do tipo do nosso contexto
-        var context = services.GetService<AppDBContext>();
+        var context = services.GetService<AppDbContext>();
 
         //Obtendo ou gerando o ID do carrinho de compras
         string carrinhoId = session.GetString("CarrinhoId") ?? Guid.NewGuid().ToString();

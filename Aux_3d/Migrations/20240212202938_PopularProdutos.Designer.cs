@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Aux_3d.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20240212202938_PopularProdutos")]
     partial class PopularProdutos
     {

@@ -8,23 +8,23 @@ namespace Aux_3d.Controllers
     public class CarrinhoCompraController : Controller
     {
         private readonly IProdutoRepository _produtoRepository;
-        private readonly CarrinhoCompra _carrinhocompra;
+        private readonly CarrinhoCompra _carrinhoCompra;
 
         public CarrinhoCompraController(IProdutoRepository lancheRepository, CarrinhoCompra carrinhocompra)
         {
             _produtoRepository = lancheRepository;
-            _carrinhocompra = carrinhocompra;
+            _carrinhoCompra = carrinhocompra;
         }
 
         public IActionResult Index()
         {
-            var itens = _carrinhocompra.GetCarrinhoCompraItens();
-            _carrinhocompra.CarrinhoCompraItens = itens;
+            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
+            _carrinhoCompra.CarrinhoCompraItens = itens;
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
             {
-                CarrinhoCompra = _carrinhocompra,
-                CarrinhoCompraTotal = _carrinhocompra.GetCarrinhoCompraTotal()
+                CarrinhoCompra = _carrinhoCompra,
+                CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal()
             };
             return View(carrinhoCompraVM);
         }
@@ -33,7 +33,7 @@ namespace Aux_3d.Controllers
             var produtoselecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoid);
             if(produtoselecionado == null)
             {
-                _carrinhocompra.AdicionarAoCarrinho(produtoselecionado);
+                _carrinhoCompra.AdicionarAoCarrinho(produtoselecionado);
             }
             return RedirectToAction("Index");
         }
@@ -44,7 +44,7 @@ namespace Aux_3d.Controllers
 
             if(_produtoselecionado != null)
             {
-                _carrinhocompra.RemoverDoCarrinho(_produtoselecionado);
+                _carrinhoCompra.RemoverDoCarrinho(_produtoselecionado);
             }
             return RedirectToAction("Index");
         }

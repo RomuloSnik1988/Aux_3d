@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Aux_3d.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20240214122052_CarrinhoCompraItem")]
     partial class CarrinhoCompraItem
     {

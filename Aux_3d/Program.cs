@@ -9,11 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Referencia a Conexão com o Banco de Dados
 string mySqlConection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(mySqlConection));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(mySqlConection));
 
 //Adicionando as injeções de dependencias
-builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+
 builder.Services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
 //
@@ -45,6 +46,11 @@ app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "categoriaFiltro",
+    pattern: "Produto/{action}/{categoria?}",
+    defaults: new { Controller = "Produto", action = "List" });
+
+app.MapControllerRoute(  
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

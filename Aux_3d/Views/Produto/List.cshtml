@@ -6,7 +6,7 @@
    
     <div class="container">
     <div class="row">
-@foreach(var produto in Model.Produtos)
+        @foreach (var produto in Model.Produtos)
 {
        <partial name="_ProdutoResumo" for="@produto" />
     }

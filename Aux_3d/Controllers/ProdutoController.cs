@@ -1,32 +1,54 @@
-﻿using Aux_3d.Repositories;
+﻿using Aux_3d.Models;
 using Aux_3d.Repositories.Interfaces;
 using Aux_3d.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+
 
 namespace Aux_3d.Controllers
 {
     public class ProdutoController : Controller
     {
-       private readonly IProdutoRepository _produtoRepository;
-
+        private readonly IProdutoRepository _produtoRepository;
         public ProdutoController(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoria)
         {
-            //ViewData["Titulo"] = "Todos os Produtos";
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
 
-            //var produtos =  _produtoRepository.Produtos.ToList();
-            //return View(produtos);
+            if (string.IsNullOrEmpty(categoria))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
+                categoriaAtual = "Todos os Produtos";
 
-            var produtosListViewmodel = new ProdutoListViewModel();
-            produtosListViewmodel.Produtos = _produtoRepository.Produtos;
-            produtosListViewmodel.CategoriaAtual = "Categoria Atual";
+            }
+            else
+            {
+                produtos = _produtoRepository.Produtos
+                             .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
+                              .OrderBy(c => c.Nome);
 
-            return View(produtosListViewmodel);
+                categoriaAtual = categoria;
+
+            }
+            var produtosListViewModel = new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual,
+            };
+
+
+            return View(produtosListViewModel);
+
+        }
+        public IActionResult Details(int produtoId)
+        {
+            var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            return View(produto);
         }
     }
 }
+

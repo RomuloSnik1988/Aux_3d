@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Aux_3d.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class AppDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
