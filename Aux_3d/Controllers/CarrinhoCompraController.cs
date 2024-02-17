@@ -31,7 +31,7 @@ namespace Aux_3d.Controllers
         public IActionResult AdicionarItemNoCarrinhoCompra(int produtoid)
         {
             var produtoselecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoid);
-            if(produtoselecionado == null)
+            if(produtoselecionado != null)
             {
                 _carrinhoCompra.AdicionarAoCarrinho(produtoselecionado);
             }
