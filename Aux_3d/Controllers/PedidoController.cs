@@ -1,5 +1,6 @@
 ﻿using Aux_3d.Models;
 using Aux_3d.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aux_3d.Controllers
@@ -14,7 +15,6 @@ namespace Aux_3d.Controllers
             _pedidoRepository = pedidoRepository;
             _carrinhoCompra = carrinhoCompra;
         }
-
         [HttpGet]
         public IActionResult Checkout()
         {
