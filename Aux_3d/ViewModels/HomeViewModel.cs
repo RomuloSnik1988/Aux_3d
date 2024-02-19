@@ -4,5 +4,5 @@ namespace Aux_3d.ViewModels;
 
 public class HomeViewModel
 {
-    public IEnumerable<Produto> ProdutoPreferidos { get; set; }
+    public IEnumerable<Produto> Produtos { get; set; }
 }

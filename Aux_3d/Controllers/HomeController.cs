@@ -19,7 +19,7 @@ namespace Aux_3d.Controllers
         {
             var homeViewModel = new HomeViewModel
             {
-                ProdutoPreferidos = _produtoRepository.ProdutosPreferidos
+                Produtos = _produtoRepository.Produtos
             };
 
             return View(homeViewModel);
