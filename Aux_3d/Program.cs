@@ -4,7 +4,6 @@ using Aux_3d.Models;
 using Aux_3d.Repositories;
 using Aux_3d.Repositories.Interfaces;
 using Aux_3d.Services;
-using FastReport.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -19,12 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 string mySqlConection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(mySqlConection));
 
-FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
+//FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
 
 //Serviços de Identity - 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.Configure<ConfigurationImagens>(builder.Configuration
+    .GetSection("ConfigurationPastaImagens"));
 
 //Defaul Password settings
 builder.Services.Configure<IdentityOptions>(options =>
@@ -49,6 +51,7 @@ builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 builder.Services.AddScoped<RelatorioVendasServices>();
+builder.Services.AddScoped<RelatorioProdutoService>();
 
 builder.Services.AddAuthorization(option =>
 {
