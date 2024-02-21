@@ -44,11 +44,14 @@
                     <th>
                         @Html.DisplayNameFor(model => model.TotalPedido)
                     </th>
+                    <td>
+                        @Html.DisplayNameFor(model => model.TotalPedido)
+                    </td>
                     <th>
                         @Html.DisplayNameFor(model => model.TotalItensPedido)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.PedidoEntregueEm)
+                        @Html.DisplayNameFor(model => model.PedidoItens)
                     </th>
                 </tr>
             </thead>
@@ -70,6 +73,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TotalPedido)
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.PedidoItens)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TotalItensPedido)

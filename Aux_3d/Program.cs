@@ -51,7 +51,9 @@ builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 builder.Services.AddScoped<RelatorioVendasServices>();
+builder.Services.AddScoped<GraficoVendasService>();
 builder.Services.AddScoped<RelatorioProdutoService>();
+
 
 builder.Services.AddAuthorization(option =>
 {
